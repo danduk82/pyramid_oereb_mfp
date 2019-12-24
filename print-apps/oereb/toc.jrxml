@@ -78,11 +78,9 @@
 	<parameter name="RealEstate_SubunitOfLandRegister" class="java.lang.String"/>
 	<parameter name="TOC_Appendices" class="java.util.Map"/>
 	<parameter name="Display_RealEstate_SubunitOfLandRegister" class="java.lang.Boolean"/>
+	<parameter name="nbTocPages" class="java.lang.Integer"/>
 	<field name="Text" class="java.lang.String"/>
-	<variable name="page_counter" class="java.lang.Integer" incrementType="Page">
-		<variableExpression><![CDATA[$V{page_counter} + 1]]></variableExpression>
-		<initialValueExpression><![CDATA[1]]></initialValueExpression>
-	</variable>
+	<variable name="page_counter" class="java.lang.Integer" incrementType="Report"/>
 	<pageHeader>
 		<band height="60">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -202,7 +200,7 @@
 					<subreportParameterExpression><![CDATA[$P{isReduced}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="page_counter">
-					<subreportParameterExpression><![CDATA[$V{page_counter}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{nbTocPages}]]></subreportParameterExpression>
 				</subreportParameter>
 				<dataSourceExpression><![CDATA[$P{BookmarkDataSource}]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{isReduced}?"tocReduced.jasper":"tocFull.jasper"]]></subreportExpression>
@@ -333,6 +331,7 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<dataSourceExpression><![CDATA[$P{ExclusionOfLiabilityDataSource}]]></dataSourceExpression>
+				<returnValue subreportVariable="rep_count" toVariable="page_counter"/>
 				<subreportExpression><![CDATA["exclusion_of_liability.jasper"]]></subreportExpression>
 			</subreport>
 			<textField>

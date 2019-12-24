@@ -58,6 +58,7 @@
 	<parameter name="Certification" class="java.lang.String"/>
 	<parameter name="CertificationAtWeb" class="java.lang.String"/>
 	<parameter name="MultiPageTOC" class="java.lang.Boolean"/>
+	<parameter name="nbTocPages" class="java.lang.Integer"/>
 	<variable name="TOC_Appendices" class="java.util.Map">
 		<variableExpression><![CDATA[new java.util.HashMap()]]></variableExpression>
 	</variable>
@@ -167,6 +168,9 @@
 					<subreportParameter name="Certification">
 						<subreportParameterExpression><![CDATA[$P{Certification}]]></subreportParameterExpression>
 					</subreportParameter>
+					<subreportParameter name="nbTocPages">
+						<subreportParameterExpression><![CDATA[$P{nbTocPages}]]></subreportParameterExpression>
+					</subreportParameter>
 					<subreportParameter name="CertificationAtWeb">
 						<subreportParameterExpression><![CDATA[$P{CertificationAtWeb}]]></subreportParameterExpression>
 					</subreportParameter>
@@ -261,6 +265,9 @@
 					<subreportParameter name="Display_RealEstate_SubunitOfLandRegister">
 						<subreportParameterExpression><![CDATA[$P{Display_RealEstate_SubunitOfLandRegister}]]></subreportParameterExpression>
 					</subreportParameter>
+					<subreportParameter name="nbTocPages">
+						<subreportParameterExpression><![CDATA[$P{nbTocPages}]]></subreportParameterExpression>
+					</subreportParameter>
 					<subreportExpression><![CDATA["toc.jasper"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
@@ -352,6 +359,9 @@
 					<subreportParameter name="REPORT_RESOURCE_BUNDLE">
 						<subreportParameterExpression><![CDATA[$P{REPORT_RESOURCE_BUNDLE}]]></subreportParameterExpression>
 					</subreportParameter>
+					<subreportParameter name="nbTocPages">
+						<subreportParameterExpression><![CDATA[$P{nbTocPages}]]></subreportParameterExpression>
+					</subreportParameter>
 					<subreportExpression><![CDATA["multiPageTOC.jasper"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
@@ -437,6 +447,9 @@
 					<subreportParameter name="REPORT_RESOURCE_BUNDLE">
 						<subreportParameterExpression><![CDATA[$P{REPORT_RESOURCE_BUNDLE}]]></subreportParameterExpression>
 					</subreportParameter>
+					<subreportParameter name="nbTocPages">
+						<subreportParameterExpression><![CDATA[$P{nbTocPages}]]></subreportParameterExpression>
+					</subreportParameter>
 					<subreportExpression><![CDATA["additionalInfoMultipageTOC.jasper"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
@@ -499,11 +512,6 @@
 	</group>
 	<detail>
 		<part uuid="dbf7b612-de21-4609-8537-6538c611480c">
-			<!--
-			IMPORTANT NOTE:
-			The RealEstate_RestrictionOnLandownershipDataSource is only of type JRMapCollectionDataSource
-			if there is at least one PLR for the real estate. If there is no PLR it's empty and of type JREmptyDataSource.
-			-->
 			<printWhenExpression><![CDATA[$P{RealEstate_RestrictionOnLandownershipDataSource} instanceof net.sf.jasperreports.engine.data.JRMapCollectionDataSource]]></printWhenExpression>
 			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 				<subreportParameter name="REPORT_CONNECTION">
