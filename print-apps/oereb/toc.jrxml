@@ -331,7 +331,6 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<dataSourceExpression><![CDATA[$P{ExclusionOfLiabilityDataSource}]]></dataSourceExpression>
-				<returnValue subreportVariable="rep_count" toVariable="page_counter"/>
 				<subreportExpression><![CDATA["exclusion_of_liability.jasper"]]></subreportExpression>
 			</subreport>
 			<textField>
