@@ -58,7 +58,9 @@
 	<parameter name="Certification" class="java.lang.String"/>
 	<parameter name="CertificationAtWeb" class="java.lang.String"/>
 	<parameter name="MultiPageTOC" class="java.lang.Boolean"/>
-	<parameter name="nbTocPages" class="java.lang.Integer"/>
+	<parameter name="nbTocPages" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
 	<variable name="TOC_Appendices" class="java.util.Map">
 		<variableExpression><![CDATA[new java.util.HashMap()]]></variableExpression>
 	</variable>
